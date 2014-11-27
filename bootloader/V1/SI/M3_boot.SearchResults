@@ -1,0 +1,7 @@
+---- TA_FLASH_ERR Matches (6 in 4 files) ----
+ABA.c (app):			TA_AckCommand(CMD_AUTHORIZE, 0, 0, TA_FLASH_ERR);		
+App_define.h (app_inc):#define TA_FLASH_ERR				(0x15)		//flash编程出错
+Boot_hal.c (app):			return TA_FLASH_ERR;
+Command_Process.c (app):		TA_AckCommand(CMD_PROG_UPGRADE,Count>>8,Count&0x00ff,TA_FLASH_ERR);	//第Count包数据校验出错
+Command_Process.c (app):			TA_AckCommand(CMD_PROG_UPGRADE,Count>>8,Count&0x00ff,TA_FLASH_ERR);	//第Count包数据校验出错
+Command_Process.c (app):		TA_AckCommand(CMD_PROG_UPGRADE,FINISHED_UPG,0,TA_FLASH_ERR);	//第Count包数据校验出错

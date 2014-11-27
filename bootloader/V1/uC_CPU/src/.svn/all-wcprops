@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/69/trunk/ST/SDK/uC_CPU/src
+END
+cpu_a.asm
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/69/trunk/ST/SDK/uC_CPU/src/cpu_a.asm
+END
+cpu_c.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/69/trunk/ST/SDK/uC_CPU/src/cpu_c.c
+END
