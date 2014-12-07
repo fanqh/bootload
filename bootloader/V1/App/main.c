@@ -1,5 +1,10 @@
 #include "Include.h"
+#include "spi.h"
+#include "DK_RFM.h"
+#include "stdio.h"
+#include "timer.h"
 
+uint8 pbuf[10];
 
 
  void *const bootfunc[]={
@@ -43,6 +48,32 @@ int main(void)
     Boot_UsartInit();
     SysTick_Init(TICKS_13US);
 
+	app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
+	
+
+	
+	SpiMsterGpioInit(SPI_2);
+
+ 	RFM69H_Config();
+	RFM69H_EntryRx();
+	
+//		printf("system is working\r\n");	
+//	
+	while(1)
+	{	   
+		int len =0;
+//		printf("system is working\r\n");
+		 if(RFM69H_RxPacket(pbuf))
+		 {	
+		 	len = RFM69H_Analysis();
+			Disable_SysTick();
+			if(len > 0)
+				printf("data len = %d\r\n", len);
+		 }
+		 	
+	}
+
+
 #if 0
     Boot_UsartSend("syx",3);
     Command_Process();  
@@ -67,5 +98,26 @@ int main(void)
     return 0;    
 
 
+}
+
+#ifdef __GNUC__
+  /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
+     set to 'Yes') calls __io_putchar() */
+  #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+  #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
+
+PUTCHAR_PROTOTYPE
+{
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART */
+  USART_SendData(USART2, (uint8_t) ch);
+
+  /* Loop until the end of transmission */
+  while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET)
+  {}
+
+  return ch;
 }
 
