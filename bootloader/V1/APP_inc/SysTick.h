@@ -8,6 +8,7 @@
 #define TICKS_100US                 (10000)  
 #define TICKS_13US                  (10000000/131)  //13.1us
 #define TICKS_10US                  (100000) 
+#define TICKS_5US                   (200000) 
 #define TICKS_1US                   (1000000)
 
 void    SysTick_Init(unsigned int ticks);

@@ -436,21 +436,6 @@
               <FileType>1</FileType>
               <FilePath>.\App\Command_Process.c</FilePath>
             </File>
-            <File>
-              <FileName>DK_RFM69H.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\DK_RFM69H.c</FilePath>
-            </File>
-            <File>
-              <FileName>spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>Timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\Timer.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

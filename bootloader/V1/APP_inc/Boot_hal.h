@@ -63,9 +63,4 @@ void    Flash_Code_UnProtect(void);
 uint8   get_usart_interrupt_flg(void);
 
 void    delay_us(uint32 times);
-
-
-
-
-
 #endif

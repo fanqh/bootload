@@ -39,39 +39,15 @@ __asm void exit_bios(uint32 func,uint32 addr)
 
 int main(void)
 {
-    uint8 status;
+
     Boot_ResetSysClk(1,1);	
     Boot_RCC_Config();
     Boot_NVIC_Config();
     BSP_IntInit(); 
     Boot_IoInit();
     Boot_UsartInit();
-    SysTick_Init(TICKS_13US);
+    SysTick_Init(TICKS_5US);
 
-	app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
-	
-
-	
-	SpiMsterGpioInit(SPI_2);
-
- 	RFM69H_Config();
-	RFM69H_EntryRx();
-	
-//		printf("system is working\r\n");	
-//	
-	while(1)
-	{	   
-		int len =0;
-//		printf("system is working\r\n");
-		 if(RFM69H_RxPacket(pbuf))
-		 {	
-		 	len = RFM69H_Analysis();
-			Disable_SysTick();
-			if(len > 0)
-				printf("data len = %d\r\n", len);
-		 }
-		 	
-	}
 
 
 #if 0
